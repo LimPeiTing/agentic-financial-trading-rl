@@ -242,15 +242,47 @@ This discourages strategies that generate profits by taking excessive risk.
 
 Three RL algorithms were evaluated:
 
-** PPO — Proximal Policy Optimization
+PPO — Proximal Policy Optimization
 
 A stable policy gradient method commonly used in financial RL research.
 
-** A2C — Advantage Actor Critic
+A2C — Advantage Actor Critic
 
 An actor-critic algorithm that learns both policy and value functions.
 
-** DDPG — Deep Deterministic Policy Gradient
+DDPG — Deep Deterministic Policy Gradient
 
 A continuous control algorithm suitable for portfolio allocation problems.
+
+---
+
+## Training Process
+
+Agents are trained using historical market data under an offline simulation environment.
+
+```mermaid
+flowchart LR
+
+A[Market State<br>Technical + Fundamental + Sentiment]
+
+A --> B[RL Agent]
+
+B --> C[Proposed Trade Action]
+
+C --> D{LLM Policy Annotator<br>Optional}
+
+D -->|Approve| E[Execute Trade]
+
+D -->|Reduce| F[Adjust Position Size]
+
+D -->|Reject| G[Cancel Trade]
+
+F --> E
+
+E --> H[Portfolio Update]
+
+H --> I[Reward Calculation]
+```
+
+---
 
