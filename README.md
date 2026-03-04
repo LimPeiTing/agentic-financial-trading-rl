@@ -52,85 +52,35 @@ These signals form the state representation for reinforcement learning agents, w
 
 ---
 
-flowchart TD
+## System Architecture
+
 ```mermaid
-%% DATA SOURCES
+flowchart TD
+
 A[Market Data<br>Yahoo Finance]
 B[Fundamental Data<br>Alpha Vantage]
 C[Text Data<br>News / Reddit]
 
-%% DATA PIPELINE
-A --> D[Data Collection & Integration]
+A --> D[Data Collection]
 B --> D
-C --> E[FinBERT Sentiment Analysis]
+C --> E[FinBERT Sentiment]
 
-%% FEATURE ENGINEERING
-D --> F[Feature Engineering<br>Technical Indicators<br>Fundamental Ratios]
-E --> G[Daily Sentiment Index]
+D --> F[Feature Engineering]
+E --> G[Sentiment Index]
 
-%% STATE CONSTRUCTION
 F --> H[State Representation]
 G --> H
 
-%% RL ENVIRONMENT
-H --> I[Custom RL Trading Environment]
-
-%% RL AGENTS
-I --> J[PPO Agent]
-I --> K[A2C Agent]
-I --> L[DDPG Agent]
-
-%% EVALUATION
-J --> M[Backtesting & Evaluation]
-K --> M
-L --> M
-
-%% ABLATION
-M --> N[Ablation Study]
-
-%% OPTIONAL LLM
-N --> O[Optional LLM Policy Annotator]
-
-```
----
-
-```mermaid
-System Workflow
-
-The full pipeline executes in the following stages:
-flowchart TD
-
-A[Market Data<br>Yahoo Finance] --> D[Data Integration]
-
-B[Fundamental Data<br>Alpha Vantage] --> D
-
-C[Text Data<br>News / Reddit] --> E[FinBERT Sentiment]
-
-E --> F[Daily Sentiment Index]
-
-D --> G[Feature Engineering]
-
-F --> G
-
-G --> H[RL State Dataset]
-
-H --> I[Train RL Agents]
+H --> I[RL Trading Environment]
 
 I --> J[PPO]
-
 I --> K[A2C]
-
 I --> L[DDPG]
 
 J --> M[Backtesting]
-
 K --> M
-
 L --> M
 
-M --> N[Performance Metrics]
-
-N --> O[Ablation Study]
-
+M --> N[Ablation Study]
+N --> O[Optional LLM Policy Annotator]
 ```
----
