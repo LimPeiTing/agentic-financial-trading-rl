@@ -53,7 +53,7 @@ These signals form the state representation for reinforcement learning agents, w
 ---
 
 flowchart TD
-
+```mermaid
 %% DATA SOURCES
 A[Market Data<br>Yahoo Finance]
 B[Fundamental Data<br>Alpha Vantage]
@@ -91,8 +91,10 @@ M --> N[Ablation Study]
 %% OPTIONAL LLM
 N --> O[Optional LLM Policy Annotator]
 
+```
 ---
 
+```mermaid
 System Workflow
 
 The full pipeline executes in the following stages:
@@ -130,4 +132,5 @@ M --> N[Performance Metrics]
 
 N --> O[Ablation Study]
 
+```
 ---
