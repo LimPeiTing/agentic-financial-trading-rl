@@ -57,34 +57,77 @@ These signals form the state representation for reinforcement learning agents, w
 ```mermaid
 flowchart TD
 
-A[Market Data<br>Yahoo Finance]
-B[Fundamental Data<br>Alpha Vantage]
-C[Text Data<br>News / Reddit]
+## System Architecture
 
-A --> D[Data Collection]
-B --> D
-C --> E[FinBERT Sentiment]
+The diagram below illustrates the modular architecture of the proposed AI trading research framework, integrating financial data, sentiment analysis, reinforcement learning, and evaluation components.
 
-D --> F[Feature Engineering]
-E --> G[Sentiment Index]
+```mermaid
+flowchart TD
 
-F --> H[State Representation]
-G --> H
+%% DATA LAYER
+subgraph Data Layer
+A1[Market Data<br>Yahoo Finance]
+A2[Fundamental Data<br>Alpha Vantage]
+A3[Text Data<br>News / Reddit]
+end
 
-H --> I[RL Trading Environment]
+%% FEATURE LAYER
+subgraph Feature Layer
+B1[Technical Indicators]
+B2[Fundamental Ratios]
+B3[FinBERT Sentiment Analysis]
+end
 
-I --> J[PPO]
-I --> K[A2C]
-I --> L[DDPG]
+%% RL LAYER
+subgraph Reinforcement Learning Layer
+C1[State Representation]
+C2[Custom Trading Environment]
+C3[PPO Agent]
+C4[A2C Agent]
+C5[DDPG Agent]
+end
 
-J --> M[Backtesting]
-K --> M
-L --> M
-M --> N[Ablation Study]
-N --> O[Optional LLM Policy Annotator]
+%% EVALUATION LAYER
+subgraph Evaluation Layer
+D1[Backtesting]
+D2[Performance Metrics]
+D3[Ablation Study]
+D4[Optional LLM Policy Annotator]
+end
 
+A1 --> B1
+A2 --> B2
+A3 --> B3
+
+B1 --> C1
+B2 --> C1
+B3 --> C1
+
+C1 --> C2
+
+C2 --> C3
+C2 --> C4
+C2 --> C5
+
+C3 --> D1
+C4 --> D1
+C5 --> D1
+
+D1 --> D2
+D2 --> D3
+D3 --> D4
 ```
 
+
+---
+### Architecture Summary
+
+The system is organized into four main layers:
+
+• Data Layer – Collects market, fundamental, and textual data sources  
+• Feature Layer – Converts raw data into structured indicators and sentiment signals  
+• Reinforcement Learning Layer – Trains agents to learn trading policies  
+• Evaluation Layer – Assesses strategies using financial metrics and ablation studies
 ---
 
 ## System Workflow
