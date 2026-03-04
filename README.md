@@ -54,8 +54,7 @@ These signals form the state representation for reinforcement learning agents, w
 
 ## System Architecture
 
-```mermaid
-flowchart TD
+
 
 ## System Architecture
 
