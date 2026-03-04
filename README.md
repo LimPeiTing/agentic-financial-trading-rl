@@ -260,6 +260,25 @@ A continuous control algorithm suitable for portfolio allocation problems.
 
 Agents are trained using historical market data under an offline simulation environment.
 
+Training Dataset
+      │
+      ▼
+RL Environment Simulation
+      │
+      ▼
+Agent learns trading policy
+      │
+      ▼
+Trained model saved
+
+No live trading or real capital is involved.
+
+---
+
+## Trading Decision Process
+
+This explains how a single trading decision is made.
+
 ```mermaid
 flowchart LR
 
@@ -283,6 +302,163 @@ E --> H[Portfolio Update]
 
 H --> I[Reward Calculation]
 ```
+
+---
+
+## Evaluation and Backtesting
+
+All models are evaluated using out-of-sample historical data.
+
+Performance is measured using standard financial metrics.
+
+Examples include:
+
+- Annual Return
+
+- Cumulative Return
+
+- Annual Volatility
+
+- Sharpe Ratio
+
+- Sortino Ratio
+
+- Calmar Ratio
+
+- Max Drawdown
+
+- Omega Ratio
+
+- Tail Ratio
+
+These metrics provide a balanced evaluation of performance and risk.
+
+---
+
+
+## Ablation Study
+
+An ablation study is conducted to evaluate how different feature groups affect agent performance.
+
+Feature groups tested include:
+Technical indicators only
+Fundamental indicators only
+Sentiment features only
+Technical + Fundamental
+Technical + Sentiment
+Fundamental + Sentiment
+Technical + Fundamental + Sentiment
+
+This helps understand which types of financial signals contribute most to decision quality.
+
+---
+
+## Optional LLM Policy Annotator
+
+The system also explores a concept called Agentic AI oversight.
+
+An optional module can review trading actions before execution.
+RL Agent proposes action
+        │
+        ▼
+LLM Policy Annotator
+        │
+        ▼
+Approve / Reduce / Reject trade
+
+This module is not used during training and serves only as an experimental governance layer.
+
+---
+
+## Repository Structure
+
+agentic-financial-trading-rl
+
+data/
+    raw/
+    processed/
+    rl_ready/
+
+models/
+results/
+
+src/
+    data/
+    features/
+    sentiment/
+    environment/
+    agents/
+    training/
+    evaluation/
+    annotation/
+    utils/
+
+scripts/
+    run_full_pipeline.py
+    train_all_agents.py
+    run_ablation.py
+
+notebooks/
+    thesis_experiments/
+
+---
+
+## Running the Full Pipeline
+
+The entire system can be executed with a single command.
+
+python scripts/run_full_pipeline.py
+
+This will:
+
+- collect and prepare data
+
+- generate features
+
+- compute sentiment signals
+
+- train reinforcement learning agents
+
+- evaluate strategies
+
+- produce experiment results
+
+---
+
+## Key Contributions
+
+This project demonstrates how multiple AI techniques can be combined within a financial decision framework.
+
+Main contributions include:
+
+- integration of financial sentiment analysis and reinforcement learning
+
+- a custom multi-asset trading environment
+
+- evaluation of multiple RL algorithms
+
+- feature ablation analysis
+
+- modular research pipeline design
+
+- exploration of LLM-based policy moderation
+
+---
+
+## Important Notes
+
+This project is a research study and not a trading recommendation system.
+
+Key limitations:
+
+- evaluation is performed using historical data only
+
+- results are dependent on market conditions in the dataset
+
+- the system is designed for research and experimentation
+
+- No claims are made about real-world profitability.
+
 
 ---
 
