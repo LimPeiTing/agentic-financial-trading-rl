@@ -80,7 +80,177 @@ I --> L[DDPG]
 J --> M[Backtesting]
 K --> M
 L --> M
-
 M --> N[Ablation Study]
 N --> O[Optional LLM Policy Annotator]
+
 ```
+
+---
+
+## System Workflow
+
+The full pipeline executes in the following stages:
+1. Collect financial market data
+2. Engineer financial features
+3. Generate sentiment signals using FinBERT
+4. Build RL-ready datasets
+5. Train reinforcement learning agents
+6. Evaluate strategies using offline backtesting
+7. Perform ablation studies
+8. Optionally apply LLM policy moderation
+
+---
+
+## Data Sources
+
+The project integrates multiple financial data sources.
+
+- Market Data
+
+- Historical stock market data including:
+
+- Open
+
+- High
+
+- Low
+
+- Close
+
+- Adjusted Close
+
+- Volume
+
+Collected using the Yahoo Finance API.
+
+---
+
+## Fundamental Indicators
+
+Company financial metrics used to capture business fundamentals.
+
+Examples include:
+
+- earnings per share
+
+- revenue
+
+- net income
+
+- financial ratios
+
+Collected using the Alpha Vantage API.
+
+---
+## Sentiment Signals
+
+Financial sentiment signals are extracted from textual sources.
+
+The project uses FinBERT, a transformer model trained specifically for financial language.
+
+Sentiment outputs are converted into numerical signals and aggregated into a daily sentiment index.
+
+---
+
+## Feature Engineering
+
+The system generates multiple feature groups used by the reinforcement learning agents.
+
+Technical Indicators
+
+Examples:
+
+- RSI
+
+- MACD
+
+- CCI
+
+- ADX
+
+- price percentage changes
+
+- trading volume
+
+These indicators capture market momentum and price trends.
+
+---
+
+## Fundamental Ratios
+
+Examples:
+
+- Return on Equity (ROE)
+
+- Return on Assets (ROA)
+
+- Net Profit Margin
+
+- Debt to Equity ratio
+
+- Free Cash Flow
+
+These represent company financial health.
+
+---
+
+## Sentiment Features
+
+Examples:
+
+- FinBERT sentiment scores
+
+- aggregated daily sentiment index
+
+- external sentiment indicators
+
+These represent market perception and investor mood.
+
+---
+
+## Reinforcement Learning Environment
+
+A custom OpenAI Gym environment was developed to simulate a multi-asset trading system.
+
+Key characteristics:
+
+- multi-asset portfolio
+
+- continuous action space
+
+- transaction costs
+
+- portfolio value tracking
+
+- risk-aware reward function
+
+The environment receives actions from RL agents and updates portfolio positions accordingly.
+
+
+---
+
+
+## Reward Design
+
+The reward function balances profitability and risk control.
+Reward = portfolio_return − (drawdown_penalty × drawdown)
+This discourages strategies that generate profits by taking excessive risk.
+
+---
+
+## Reinforcement Learning Agents
+
+Three RL algorithms were evaluated:
+
+** PPO — Proximal Policy Optimization
+
+A stable policy gradient method commonly used in financial RL research.
+
+** A2C — Advantage Actor Critic
+
+An actor-critic algorithm that learns both policy and value functions.
+
+** DDPG — Deep Deterministic Policy Gradient
+
+A continuous control algorithm suitable for portfolio allocation problems.
+
