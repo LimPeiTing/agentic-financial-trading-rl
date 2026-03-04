@@ -371,6 +371,7 @@ This module is not used during training and serves only as an experimental gover
 ---
 
 ## Repository Structure
+```bash
 
 agentic-financial-trading-rl
 
@@ -400,7 +401,7 @@ scripts/
 
 notebooks/
     thesis_experiments/
-
+```
 ---
 
 ## Running the Full Pipeline
