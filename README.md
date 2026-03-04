@@ -123,10 +123,10 @@ D3 --> D4
 
 The system is organized into four main layers:
 
-• Data Layer – Collects market, fundamental, and textual data sources  
-• Feature Layer – Converts raw data into structured indicators and sentiment signals  
-• Reinforcement Learning Layer – Trains agents to learn trading policies  
-• Evaluation Layer – Assesses strategies using financial metrics and ablation studies
+- Data Layer – Collects market, fundamental, and textual data sources
+- Feature Layer – Converts raw data into structured indicators and sentiment signals  
+- Reinforcement Learning Layer – Trains agents to learn trading policies  
+- Evaluation Layer – Assesses strategies using financial metrics and ablation studies
 ---
 
 ## System Workflow
